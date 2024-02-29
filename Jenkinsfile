@@ -1,35 +1,24 @@
 pipeline {
     agent any
-    tools {
-        // Define Node.js and npm installations
-        nodejs 'node'
-    }
-
     stages {
-        stage('Checkout') {
+        stage('checkout') {
             steps {
-                // Checkout your code from version control
                 git branch: 'main', url: 'https://github.com/D-Bhavani/project5.git'
             }
         }
-
-        stage('Install Dependencies') {
+        stage('install') {
             steps {
                 sh 'npm install'
             }
         }
-
-        stage('Build') {
+        stage('build') {
             steps {
-                // Build React application
-                sh 'npm run build'
+                sh 'npm build'
             }
         }
-
-        stage('Test') {
+        stage('test') {
             steps {
-                // Run tests
-                echo 'npm test'
+                sh 'npm test'
             }
         }
     }
